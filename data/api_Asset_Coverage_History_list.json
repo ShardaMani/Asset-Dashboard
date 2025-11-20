@@ -1,0 +1,67 @@
+[
+  {
+    "createdAt": "2025-11-14T09:50:15.111Z",
+    "updatedAt": "2025-11-14T09:50:15.115Z",
+    "end_date": "2025-11-14T09:50:15.112Z",
+    "start_date": "2025-11-14 09:50:15",
+    "Type_of_Coverage": "Warranty",
+    "id": 2,
+    "Description": "",
+    "Asset_Id": 24,
+    "createdById": 731,
+    "updatedById": 731,
+    "Coverage_Duration": null
+  },
+  {
+    "createdAt": "2025-11-14T11:36:34.948Z",
+    "updatedAt": "2025-11-14T11:36:34.952Z",
+    "end_date": "2025-11-14T11:36:34.949Z",
+    "start_date": "2025-11-14 11:36:34",
+    "Type_of_Coverage": "Warranty",
+    "id": 3,
+    "Description": "Provide a brief summary of the coverage, such as the policy number, provider name, or key terms, if any",
+    "Asset_Id": 25,
+    "createdById": 731,
+    "updatedById": 731,
+    "Coverage_Duration": null
+  },
+  {
+    "createdAt": "2025-11-14T11:55:34.190Z",
+    "updatedAt": "2025-11-14T11:55:34.192Z",
+    "end_date": "2025-11-14T11:55:34.190Z",
+    "start_date": "2025-11-14 11:55:34",
+    "Type_of_Coverage": "Warranty",
+    "id": 4,
+    "Description": "Provide a brief summary of the coverage, such as the policy number, provider name, or key terms, if any",
+    "Asset_Id": 26,
+    "createdById": 731,
+    "updatedById": 731,
+    "Coverage_Duration": null
+  },
+  {
+    "createdAt": "2025-11-14T12:02:18.235Z",
+    "updatedAt": "2025-11-14T12:02:18.237Z",
+    "end_date": "2025-11-14T12:02:18.235Z",
+    "start_date": "2025-11-14 12:02:18",
+    "Type_of_Coverage": "Warranty",
+    "id": 5,
+    "Description": "",
+    "Asset_Id": 27,
+    "createdById": 731,
+    "updatedById": 731,
+    "Coverage_Duration": null
+  },
+  {
+    "createdAt": "2025-11-17T07:48:45.308Z",
+    "updatedAt": "2025-11-17T07:48:45.311Z",
+    "end_date": "2025-11-17T07:48:45.309Z",
+    "start_date": "2025-11-17 07:48:45",
+    "Type_of_Coverage": "Warranty",
+    "id": 6,
+    "Description": "",
+    "Asset_Id": 28,
+    "createdById": 731,
+    "updatedById": 731,
+    "Coverage_Duration": null
+  }
+]

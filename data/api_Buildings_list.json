@@ -1,0 +1,18 @@
+[
+  {
+    "createdAt": "2025-10-24T06:46:24.912Z",
+    "updatedAt": "2025-10-24T06:46:24.912Z",
+    "id": 1,
+    "Building_Name": "Computer Center",
+    "updatedById": 1,
+    "createdById": 1
+  },
+  {
+    "createdAt": "2025-10-24T06:46:45.335Z",
+    "updatedAt": "2025-10-24T06:46:45.335Z",
+    "id": 2,
+    "Building_Name": "Engineering Unit",
+    "updatedById": 1,
+    "createdById": 1
+  }
+]

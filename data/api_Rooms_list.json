@@ -1,0 +1,182 @@
+[
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 3,
+    "Room_Number": "CC201",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 4,
+    "Room_Number": "CC202",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 5,
+    "Room_Number": "CC203",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 6,
+    "Room_Number": "CC205",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 7,
+    "Room_Number": "CC206",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 8,
+    "Room_Number": "CC207",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 9,
+    "Room_Number": "CC208",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 10,
+    "Room_Number": "CC209",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 11,
+    "Room_Number": "CC213",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 12,
+    "Room_Number": "CC214",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 13,
+    "Room_Number": "CC215",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 14,
+    "Room_Number": "CC216",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 15,
+    "Room_Number": "CC217",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 16,
+    "Room_Number": "CC218",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 17,
+    "Room_Number": "CC221",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 18,
+    "Room_Number": "CC223",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 19,
+    "Room_Number": "CC224",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 20,
+    "Room_Number": "CC203A",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 21,
+    "Room_Number": "CC204",
+    "createdById": 1,
+    "updatedById": 1
+  },
+  {
+    "createdAt": "2025-11-07T09:53:26.612Z",
+    "updatedAt": "2025-11-07T09:53:26.612Z",
+    "Building_id": 1,
+    "id": 22,
+    "Room_Number": "CC209A",
+    "createdById": 1,
+    "updatedById": 1
+  }
+]

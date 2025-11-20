@@ -1,0 +1,1352 @@
+[
+  {
+    "openapi": "3.0.3",
+    "info": {
+      "title": "NocoBase API documentation",
+      "description": "",
+      "contact": {
+        "url": "https://github.com/nocobase/nocobase/issues"
+      },
+      "license": {
+        "name": "Core packages are Apache 2.0 & Plugins packages are AGPL 3.0 licensed.",
+        "url": "https://github.com/nocobase/nocobase#license"
+      },
+      "version": "1.8.14"
+    },
+    "externalDocs": {
+      "description": "Find out more about NocoBase",
+      "url": "https://docs.nocobase.com/api/http"
+    },
+    "components": {
+      "securitySchemes": {
+        "api-key": {
+          "type": "http",
+          "scheme": "bearer"
+        }
+      },
+      "schemas": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "description": "\u9519\u8bef\u4fe1\u606f",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Buildings": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Building_Name": {
+              "type": "string"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Buildings.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Buildings"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "Rooms": {
+          "type": "object",
+          "properties": {
+            "Building_id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Room_Number": {
+              "type": "string"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Rooms.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Rooms"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "Asset": {
+          "type": "object",
+          "properties": {
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Asset_RFID_Tag": {
+              "type": "string"
+            },
+            "end_user_id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Serial_Number": {
+              "type": "string"
+            },
+            "SRB_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Is_registered": {
+              "type": "string"
+            },
+            "is_active": {
+              "type": "string"
+            },
+            "Asset_Name": {
+              "type": "string"
+            },
+            "PO_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Operational_Purpose": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Model_Number": {
+              "type": "string"
+            },
+            "Room_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Building_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Asset.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Asset"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "parameters": {
+        "collectionIndex": {
+          "required": true,
+          "name": "collectionIndex",
+          "in": "path",
+          "description": "collection index",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTk": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TK(default by ID)",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTks": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TKs(default by ID), example: `1,2,3`",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "filter": {
+          "name": "filter",
+          "in": "query",
+          "description": "filter items",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "sort": {
+          "name": "sort",
+          "in": "query",
+          "description": "sort items by fields, example: `-field1,-field2,field3`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "-id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "-id,createdAt"
+              }
+            ]
+          }
+        },
+        "fields": {
+          "name": "fields",
+          "in": "query",
+          "description": "select fields, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "except": {
+          "name": "except",
+          "in": "query",
+          "description": "except fields in results, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "appends": {
+          "name": "appends",
+          "in": "query",
+          "description": "append associations in results, example: `assoc1,assoc2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "whitelist": {
+          "name": "whitelist",
+          "in": "query",
+          "description": "whitelist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "blacklist": {
+          "name": "blacklist",
+          "in": "query",
+          "description": "blacklist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "api-key": []
+      }
+    ],
+    "servers": [
+      {
+        "url": "/api/"
+      }
+    ],
+    "paths": {
+      "/Buildings:list": {
+        "get": {
+          "tags": [
+            "Buildings"
+          ],
+          "summary": "Returns a list of the collection",
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Buildings"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings:get": {
+        "get": {
+          "tags": [
+            "Buildings"
+          ],
+          "summary": "Return a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings:create": {
+        "post": {
+          "tags": [
+            "Buildings"
+          ],
+          "summary": "Create record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Buildings.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings:update": {
+        "post": {
+          "tags": [
+            "Buildings"
+          ],
+          "summary": "Update record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Buildings.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings:destroy": {
+        "post": {
+          "tags": [
+            "Buildings"
+          ],
+          "summary": "Delete record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:list": {
+        "get": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Return a list of One to many relationship",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Buildings"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:get": {
+        "get": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Return a record of One to many",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:create": {
+        "post": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Buildings.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:update": {
+        "post": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Buildings.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:destroy": {
+        "post": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:set": {
+        "post": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Set or reset associations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:remove": {
+        "post": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Rooms:toggle": {
+        "post": {
+          "tags": [
+            "Buildings.Rooms"
+          ],
+          "summary": "Attach or detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:list": {
+        "get": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Return a list of One to many relationship",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Buildings"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:get": {
+        "get": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Return a record of One to many",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:create": {
+        "post": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Buildings.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:update": {
+        "post": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Buildings.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Buildings"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:destroy": {
+        "post": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:set": {
+        "post": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Set or reset associations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:remove": {
+        "post": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Buildings/{collectionIndex}/Asset:toggle": {
+        "post": {
+          "tags": [
+            "Buildings.Asset"
+          ],
+          "summary": "Attach or detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "Buildings",
+        "description": "Buildings"
+      },
+      {
+        "name": "Buildings.Rooms",
+        "description": "One to many relationship, Buildings/Rooms"
+      },
+      {
+        "name": "Buildings.Asset",
+        "description": "One to many relationship, Buildings/Asset"
+      }
+    ]
+  }
+]

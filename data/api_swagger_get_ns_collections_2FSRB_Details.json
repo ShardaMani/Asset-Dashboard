@@ -1,0 +1,1568 @@
+[
+  {
+    "openapi": "3.0.3",
+    "info": {
+      "title": "NocoBase API documentation",
+      "description": "",
+      "contact": {
+        "url": "https://github.com/nocobase/nocobase/issues"
+      },
+      "license": {
+        "name": "Core packages are Apache 2.0 & Plugins packages are AGPL 3.0 licensed.",
+        "url": "https://github.com/nocobase/nocobase#license"
+      },
+      "version": "1.8.14"
+    },
+    "externalDocs": {
+      "description": "Find out more about NocoBase",
+      "url": "https://docs.nocobase.com/api/http"
+    },
+    "components": {
+      "securitySchemes": {
+        "api-key": {
+          "type": "http",
+          "scheme": "bearer"
+        }
+      },
+      "schemas": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "description": "\u9519\u8bef\u4fe1\u606f",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "SRB_Details": {
+          "type": "object",
+          "properties": {
+            "Vendor_Id": {
+              "type": "string"
+            },
+            "Employee_Name": {
+              "type": "string"
+            },
+            "Type_Of_SRB": {
+              "type": "string"
+            },
+            "Item_Description": {
+              "type": "string"
+            },
+            "Task_Initiated_By": {
+              "type": "string"
+            },
+            "Budget_Type_Value": {
+              "type": "string"
+            },
+            "Asset_Code": {
+              "type": "string"
+            },
+            "Po_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "SRB_Number": {
+              "type": "string"
+            },
+            "SRB_Date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Project_Number": {
+              "type": "string"
+            },
+            "Invoice_Number": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Amount": {
+              "type": "string"
+            },
+            "Total_Amount": {
+              "type": "string"
+            },
+            "Item_Name": {
+              "type": "string"
+            },
+            "PO_Number": {
+              "type": "string"
+            },
+            "Asset_Instance_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "SRB_Details.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/SRB_Details"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "Asset": {
+          "type": "object",
+          "properties": {
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Asset_RFID_Tag": {
+              "type": "string"
+            },
+            "end_user_id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Serial_Number": {
+              "type": "string"
+            },
+            "SRB_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Is_registered": {
+              "type": "string"
+            },
+            "is_active": {
+              "type": "string"
+            },
+            "Asset_Name": {
+              "type": "string"
+            },
+            "PO_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Operational_Purpose": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Model_Number": {
+              "type": "string"
+            },
+            "Room_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Building_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Asset.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Asset"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "Vendor": {
+          "type": "object",
+          "properties": {
+            "Vendor_Id": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Vendor_name": {
+              "type": "string"
+            },
+            "Vendor_Address": {
+              "type": "string"
+            },
+            "Vendor_Contact": {
+              "type": "string"
+            },
+            "Vendor_Email": {
+              "type": "string"
+            },
+            "Vendor_type": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Status": {
+              "type": "string"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Vendor.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Vendor"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "Purchase_Order_Details": {
+          "type": "object",
+          "properties": {
+            "Item_Name": {
+              "type": "string"
+            },
+            "Supplier_Type": {
+              "type": "string"
+            },
+            "ItemRate": {
+              "type": "string"
+            },
+            "PurchaseTotal": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Asset_code": {
+              "type": "string"
+            },
+            "PODate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Project_Number": {
+              "type": "string"
+            },
+            "BudgetDetails_Value": {
+              "type": "string"
+            },
+            "DepartmentName": {
+              "type": "string"
+            },
+            "ItemDescription": {
+              "type": "string"
+            },
+            "Indent_No": {
+              "type": "string"
+            },
+            "Vendor_Id": {
+              "type": "string"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Purchase_Order_Details.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Purchase_Order_Details"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "parameters": {
+        "collectionIndex": {
+          "required": true,
+          "name": "collectionIndex",
+          "in": "path",
+          "description": "collection index",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTk": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TK(default by ID)",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTks": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TKs(default by ID), example: `1,2,3`",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "filter": {
+          "name": "filter",
+          "in": "query",
+          "description": "filter items",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "sort": {
+          "name": "sort",
+          "in": "query",
+          "description": "sort items by fields, example: `-field1,-field2,field3`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "-id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "-id,createdAt"
+              }
+            ]
+          }
+        },
+        "fields": {
+          "name": "fields",
+          "in": "query",
+          "description": "select fields, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "except": {
+          "name": "except",
+          "in": "query",
+          "description": "except fields in results, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "appends": {
+          "name": "appends",
+          "in": "query",
+          "description": "append associations in results, example: `assoc1,assoc2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "whitelist": {
+          "name": "whitelist",
+          "in": "query",
+          "description": "whitelist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "blacklist": {
+          "name": "blacklist",
+          "in": "query",
+          "description": "blacklist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "api-key": []
+      }
+    ],
+    "servers": [
+      {
+        "url": "/api/"
+      }
+    ],
+    "paths": {
+      "/SRB_Details:list": {
+        "get": {
+          "tags": [
+            "SRB_Details"
+          ],
+          "summary": "Returns a list of the collection",
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SRB_Details"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details:get": {
+        "get": {
+          "tags": [
+            "SRB_Details"
+          ],
+          "summary": "Return a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details:create": {
+        "post": {
+          "tags": [
+            "SRB_Details"
+          ],
+          "summary": "Create record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details:update": {
+        "post": {
+          "tags": [
+            "SRB_Details"
+          ],
+          "summary": "Update record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details:destroy": {
+        "post": {
+          "tags": [
+            "SRB_Details"
+          ],
+          "summary": "Delete record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:list": {
+        "get": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Return a list of One to many relationship",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SRB_Details"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:get": {
+        "get": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Return a record of One to many",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:create": {
+        "post": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:update": {
+        "post": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:destroy": {
+        "post": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:set": {
+        "post": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Set or reset associations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:remove": {
+        "post": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Asset:toggle": {
+        "post": {
+          "tags": [
+            "SRB_Details.Asset"
+          ],
+          "summary": "Attach or detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Vendor:get": {
+        "get": {
+          "tags": [
+            "SRB_Details.Vendor"
+          ],
+          "summary": "Return a record of Many to one",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Vendor:set": {
+        "post": {
+          "tags": [
+            "SRB_Details.Vendor"
+          ],
+          "summary": "Associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "tk",
+              "in": "query",
+              "description": "targetKey",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Vendor:remove": {
+        "post": {
+          "tags": [
+            "SRB_Details.Vendor"
+          ],
+          "summary": "Disassociate the relationship record",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ]
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Vendor:update": {
+        "post": {
+          "tags": [
+            "SRB_Details.Vendor"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Vendor:create": {
+        "post": {
+          "tags": [
+            "SRB_Details.Vendor"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Vendor:destroy": {
+        "post": {
+          "tags": [
+            "SRB_Details.Vendor"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Purchase_Order_Number:get": {
+        "get": {
+          "tags": [
+            "SRB_Details.Purchase_Order_Number"
+          ],
+          "summary": "Return a record of Many to one",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Purchase_Order_Number:set": {
+        "post": {
+          "tags": [
+            "SRB_Details.Purchase_Order_Number"
+          ],
+          "summary": "Associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "tk",
+              "in": "query",
+              "description": "targetKey",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Purchase_Order_Number:remove": {
+        "post": {
+          "tags": [
+            "SRB_Details.Purchase_Order_Number"
+          ],
+          "summary": "Disassociate the relationship record",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ]
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Purchase_Order_Number:update": {
+        "post": {
+          "tags": [
+            "SRB_Details.Purchase_Order_Number"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Purchase_Order_Number:create": {
+        "post": {
+          "tags": [
+            "SRB_Details.Purchase_Order_Number"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SRB_Details.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/SRB_Details"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/SRB_Details/{collectionIndex}/Purchase_Order_Number:destroy": {
+        "post": {
+          "tags": [
+            "SRB_Details.Purchase_Order_Number"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "SRB_Details",
+        "description": "SRB Details"
+      },
+      {
+        "name": "SRB_Details.Asset",
+        "description": "One to many relationship, SRB Details/Asset"
+      },
+      {
+        "name": "SRB_Details.Vendor",
+        "description": "Many to one relationship, SRB Details/Vendor"
+      },
+      {
+        "name": "SRB_Details.Purchase_Order_Number",
+        "description": "Many to one relationship, SRB Details/Purchase_Order_Number"
+      }
+    ]
+  }
+]

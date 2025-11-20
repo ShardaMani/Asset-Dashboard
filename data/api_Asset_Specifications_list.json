@@ -1,0 +1,47 @@
+[
+  {
+    "createdAt": "2025-11-14T09:45:27.937Z",
+    "updatedAt": "2025-11-14T09:45:27.940Z",
+    "Asset_Id": 24,
+    "is_power_required": true,
+    "number_of_power_sources": 1,
+    "Specification_Name": "Length",
+    "Specification_Value": 15,
+    "id": 4,
+    "Description": null,
+    "Specification_Unit": "Centimeters (cm)",
+    "Is_chargeable": null,
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T09:46:11.640Z",
+    "updatedAt": "2025-11-14T09:46:11.643Z",
+    "Asset_Id": 24,
+    "is_power_required": true,
+    "number_of_power_sources": 1,
+    "Specification_Name": "Breadth",
+    "Specification_Value": 8,
+    "id": 5,
+    "Description": null,
+    "Specification_Unit": "Centimeters (cm)",
+    "Is_chargeable": null,
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T09:47:08.182Z",
+    "updatedAt": "2025-11-14T09:47:08.184Z",
+    "Asset_Id": 24,
+    "is_power_required": true,
+    "number_of_power_sources": 1,
+    "Specification_Name": "Height",
+    "Specification_Value": 6,
+    "id": 6,
+    "Description": null,
+    "Specification_Unit": "Centimeters (cm)",
+    "Is_chargeable": null,
+    "createdById": 731,
+    "updatedById": 731
+  }
+]

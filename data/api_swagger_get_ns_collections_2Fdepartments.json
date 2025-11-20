@@ -1,0 +1,2518 @@
+[
+  {
+    "openapi": "3.0.3",
+    "info": {
+      "title": "NocoBase API documentation",
+      "description": "",
+      "contact": {
+        "url": "https://github.com/nocobase/nocobase/issues"
+      },
+      "license": {
+        "name": "Core packages are Apache 2.0 & Plugins packages are AGPL 3.0 licensed.",
+        "url": "https://github.com/nocobase/nocobase#license"
+      },
+      "version": "1.8.14"
+    },
+    "externalDocs": {
+      "description": "Find out more about NocoBase",
+      "url": "https://docs.nocobase.com/api/http"
+    },
+    "components": {
+      "securitySchemes": {
+        "api-key": {
+          "type": "http",
+          "scheme": "bearer"
+        }
+      },
+      "schemas": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "description": "\u9519\u8bef\u4fe1\u606f",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "departments": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "title": {
+              "type": "string"
+            },
+            "isLeaf": {
+              "type": "string"
+            },
+            "sort": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "departments.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/departments"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "sort": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "users": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "passwordChangeTz": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "appLang": {
+              "type": "string"
+            },
+            "resetToken": {
+              "type": "string"
+            },
+            "systemSettings": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "sort": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Phone": {
+              "type": "string"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "users.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/users"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "sort": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "strategy": {
+              "type": "string"
+            },
+            "default": {
+              "type": "string"
+            },
+            "hidden": {
+              "type": "string"
+            },
+            "allowConfigure": {
+              "type": "string"
+            },
+            "allowNewMenu": {
+              "type": "string"
+            },
+            "snippets": {
+              "type": "string"
+            },
+            "sort": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "allowNewMobileMenu": {
+              "type": "string"
+            }
+          }
+        },
+        "roles.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/roles"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "sort": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "parameters": {
+        "collectionIndex": {
+          "required": true,
+          "name": "collectionIndex",
+          "in": "path",
+          "description": "collection index",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTk": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TK(default by ID)",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTks": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TKs(default by ID), example: `1,2,3`",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "filter": {
+          "name": "filter",
+          "in": "query",
+          "description": "filter items",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "sort": {
+          "name": "sort",
+          "in": "query",
+          "description": "sort items by fields, example: `-field1,-field2,field3`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "-id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "-id,createdAt"
+              }
+            ]
+          }
+        },
+        "fields": {
+          "name": "fields",
+          "in": "query",
+          "description": "select fields, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "except": {
+          "name": "except",
+          "in": "query",
+          "description": "except fields in results, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "appends": {
+          "name": "appends",
+          "in": "query",
+          "description": "append associations in results, example: `assoc1,assoc2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "whitelist": {
+          "name": "whitelist",
+          "in": "query",
+          "description": "whitelist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "blacklist": {
+          "name": "blacklist",
+          "in": "query",
+          "description": "blacklist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "api-key": []
+      }
+    ],
+    "servers": [
+      {
+        "url": "/api/"
+      }
+    ],
+    "paths": {
+      "/departments:list": {
+        "get": {
+          "tags": [
+            "departments"
+          ],
+          "summary": "Returns a list of the collection",
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/departments"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments:get": {
+        "get": {
+          "tags": [
+            "departments"
+          ],
+          "summary": "Return a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments:create": {
+        "post": {
+          "tags": [
+            "departments"
+          ],
+          "summary": "Create record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments:update": {
+        "post": {
+          "tags": [
+            "departments"
+          ],
+          "summary": "Update record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments:destroy": {
+        "post": {
+          "tags": [
+            "departments"
+          ],
+          "summary": "Delete record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments:move": {
+        "post": {
+          "tags": [
+            "departments"
+          ],
+          "summary": "Move record",
+          "parameters": [
+            {
+              "name": "sourceId",
+              "in": "query",
+              "description": "source id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetId",
+              "in": "query",
+              "description": "move target id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "method",
+              "in": "query",
+              "description": "move method, insertAfter or insertBefore",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sortField",
+              "in": "query",
+              "description": "sort field name, default is sort",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetScope",
+              "in": "query",
+              "description": "move target scope",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sticky",
+              "in": "query",
+              "description": "sticky to top",
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:list": {
+        "get": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Return a list of One to many relationship",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/departments"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:get": {
+        "get": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Return a record of One to many",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:create": {
+        "post": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:update": {
+        "post": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:destroy": {
+        "post": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:set": {
+        "post": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Set or reset associations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:remove": {
+        "post": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:toggle": {
+        "post": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Attach or detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/children:move": {
+        "post": {
+          "tags": [
+            "departments.children"
+          ],
+          "summary": "Move the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "sourceId",
+              "in": "query",
+              "description": "source id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetId",
+              "in": "query",
+              "description": "move target id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "method",
+              "in": "query",
+              "description": "move method, insertAfter or insertBefore",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sortField",
+              "in": "query",
+              "description": "sort field name, default is sort",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetScope",
+              "in": "query",
+              "description": "move target scope",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sticky",
+              "in": "query",
+              "description": "sticky to top",
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:list": {
+        "get": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Return a list of Many to many relationship",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/departments"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:get": {
+        "get": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Return a record of Many to many",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:create": {
+        "post": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:update": {
+        "post": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:destroy": {
+        "post": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:set": {
+        "post": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Set or reset associations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:remove": {
+        "post": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:toggle": {
+        "post": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Attach or detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/members:move": {
+        "post": {
+          "tags": [
+            "departments.members"
+          ],
+          "summary": "Move the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "sourceId",
+              "in": "query",
+              "description": "source id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetId",
+              "in": "query",
+              "description": "move target id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "method",
+              "in": "query",
+              "description": "move method, insertAfter or insertBefore",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sortField",
+              "in": "query",
+              "description": "sort field name, default is sort",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetScope",
+              "in": "query",
+              "description": "move target scope",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sticky",
+              "in": "query",
+              "description": "sticky to top",
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/parent:get": {
+        "get": {
+          "tags": [
+            "departments.parent"
+          ],
+          "summary": "Return a record of Many to one",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/parent:set": {
+        "post": {
+          "tags": [
+            "departments.parent"
+          ],
+          "summary": "Associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "tk",
+              "in": "query",
+              "description": "targetKey",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/parent:remove": {
+        "post": {
+          "tags": [
+            "departments.parent"
+          ],
+          "summary": "Disassociate the relationship record",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ]
+        }
+      },
+      "/departments/{collectionIndex}/parent:update": {
+        "post": {
+          "tags": [
+            "departments.parent"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/parent:create": {
+        "post": {
+          "tags": [
+            "departments.parent"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/parent:destroy": {
+        "post": {
+          "tags": [
+            "departments.parent"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:list": {
+        "get": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Return a list of Many to many relationship",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/departments"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:get": {
+        "get": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Return a record of Many to many",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:create": {
+        "post": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:update": {
+        "post": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:destroy": {
+        "post": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:set": {
+        "post": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Set or reset associations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:remove": {
+        "post": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:toggle": {
+        "post": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Attach or detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/roles:move": {
+        "post": {
+          "tags": [
+            "departments.roles"
+          ],
+          "summary": "Move the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "sourceId",
+              "in": "query",
+              "description": "source id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetId",
+              "in": "query",
+              "description": "move target id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "method",
+              "in": "query",
+              "description": "move method, insertAfter or insertBefore",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sortField",
+              "in": "query",
+              "description": "sort field name, default is sort",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetScope",
+              "in": "query",
+              "description": "move target scope",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sticky",
+              "in": "query",
+              "description": "sticky to top",
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:list": {
+        "get": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Return a list of Many to many relationship",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/departments"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:get": {
+        "get": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Return a record of Many to many",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:create": {
+        "post": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:update": {
+        "post": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departments.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/departments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:destroy": {
+        "post": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:set": {
+        "post": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Set or reset associations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:remove": {
+        "post": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTks"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:toggle": {
+        "post": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Attach or detach record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/departments/{collectionIndex}/owners:move": {
+        "post": {
+          "tags": [
+            "departments.owners"
+          ],
+          "summary": "Move the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "sourceId",
+              "in": "query",
+              "description": "source id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetId",
+              "in": "query",
+              "description": "move target id",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "method",
+              "in": "query",
+              "description": "move method, insertAfter or insertBefore",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sortField",
+              "in": "query",
+              "description": "sort field name, default is sort",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetScope",
+              "in": "query",
+              "description": "move target scope",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sticky",
+              "in": "query",
+              "description": "sticky to top",
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "departments",
+        "description": "{{t(\"Departments\")}}"
+      },
+      {
+        "name": "departments.children",
+        "description": "One to many relationship, {{t(\"Departments\")}}/children"
+      },
+      {
+        "name": "departments.members",
+        "description": "Many to many relationship, {{t(\"Departments\")}}/members"
+      },
+      {
+        "name": "departments.parent",
+        "description": "Many to one relationship, {{t(\"Departments\")}}/{{t(\"Superior department\")}}"
+      },
+      {
+        "name": "departments.roles",
+        "description": "Many to many relationship, {{t(\"Departments\")}}/{{t(\"Roles\")}}"
+      },
+      {
+        "name": "departments.owners",
+        "description": "Many to many relationship, {{t(\"Departments\")}}/{{t(\"Owners\")}}"
+      }
+    ]
+  }
+]

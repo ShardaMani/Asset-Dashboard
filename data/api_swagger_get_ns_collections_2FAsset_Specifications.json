@@ -1,0 +1,855 @@
+[
+  {
+    "openapi": "3.0.3",
+    "info": {
+      "title": "NocoBase API documentation",
+      "description": "",
+      "contact": {
+        "url": "https://github.com/nocobase/nocobase/issues"
+      },
+      "license": {
+        "name": "Core packages are Apache 2.0 & Plugins packages are AGPL 3.0 licensed.",
+        "url": "https://github.com/nocobase/nocobase#license"
+      },
+      "version": "1.8.14"
+    },
+    "externalDocs": {
+      "description": "Find out more about NocoBase",
+      "url": "https://docs.nocobase.com/api/http"
+    },
+    "components": {
+      "securitySchemes": {
+        "api-key": {
+          "type": "http",
+          "scheme": "bearer"
+        }
+      },
+      "schemas": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "description": "\u9519\u8bef\u4fe1\u606f",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Asset_Specifications": {
+          "type": "object",
+          "properties": {
+            "Asset_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "is_power_required": {
+              "type": "string"
+            },
+            "number_of_power_sources": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Specification_Name": {
+              "type": "string"
+            },
+            "Specification_Value": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Description": {
+              "type": "string"
+            },
+            "Specification_Unit": {
+              "type": "string"
+            },
+            "Is_chargeable": {
+              "type": "string"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Asset_Specifications.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Asset_Specifications"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        },
+        "Asset": {
+          "type": "object",
+          "properties": {
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "Asset_RFID_Tag": {
+              "type": "string"
+            },
+            "end_user_id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Serial_Number": {
+              "type": "string"
+            },
+            "SRB_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Is_registered": {
+              "type": "string"
+            },
+            "is_active": {
+              "type": "string"
+            },
+            "Asset_Name": {
+              "type": "string"
+            },
+            "PO_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Operational_Purpose": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Model_Number": {
+              "type": "string"
+            },
+            "Room_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Building_Id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "createdById": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updatedById": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "Asset.form": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Asset"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "readOnly": true
+                },
+                "createdAt": {
+                  "readOnly": true
+                },
+                "updatedAt": {
+                  "readOnly": true
+                },
+                "createdById": {
+                  "readOnly": true
+                },
+                "updatedById": {
+                  "readOnly": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "parameters": {
+        "collectionIndex": {
+          "required": true,
+          "name": "collectionIndex",
+          "in": "path",
+          "description": "collection index",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTk": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TK(default by ID)",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "filterByTks": {
+          "name": "filterByTk",
+          "in": "query",
+          "description": "filter by TKs(default by ID), example: `1,2,3`",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "filter": {
+          "name": "filter",
+          "in": "query",
+          "description": "filter items",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "sort": {
+          "name": "sort",
+          "in": "query",
+          "description": "sort items by fields, example: `-field1,-field2,field3`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "-id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "-id,createdAt"
+              }
+            ]
+          }
+        },
+        "fields": {
+          "name": "fields",
+          "in": "query",
+          "description": "select fields, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "except": {
+          "name": "except",
+          "in": "query",
+          "description": "except fields in results, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "appends": {
+          "name": "appends",
+          "in": "query",
+          "description": "append associations in results, example: `assoc1,assoc2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "whitelist": {
+          "name": "whitelist",
+          "in": "query",
+          "description": "whitelist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        },
+        "blacklist": {
+          "name": "blacklist",
+          "in": "query",
+          "description": "blacklist for fields changes, example: `field1,field2`",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "id",
+                  "createdAt"
+                ]
+              },
+              {
+                "type": "string",
+                "example": "id,createdAt"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "api-key": []
+      }
+    ],
+    "servers": [
+      {
+        "url": "/api/"
+      }
+    ],
+    "paths": {
+      "/Asset_Specifications:list": {
+        "get": {
+          "tags": [
+            "Asset_Specifications"
+          ],
+          "summary": "Returns a list of the collection",
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "page size",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Asset_Specifications"
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "count": {
+                            "type": "integer",
+                            "description": "total count"
+                          },
+                          "page": {
+                            "type": "integer",
+                            "description": "current page"
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "description": "items count per page"
+                          },
+                          "totalPage": {
+                            "type": "integer",
+                            "description": "total page"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Asset_Specifications:get": {
+        "get": {
+          "tags": [
+            "Asset_Specifications"
+          ],
+          "summary": "Return a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/sort"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Asset_Specifications"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Asset_Specifications:create": {
+        "post": {
+          "tags": [
+            "Asset_Specifications"
+          ],
+          "summary": "Create record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Asset_Specifications.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Asset_Specifications"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Asset_Specifications:update": {
+        "post": {
+          "tags": [
+            "Asset_Specifications"
+          ],
+          "summary": "Update record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Asset_Specifications.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Asset_Specifications"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Asset_Specifications:destroy": {
+        "post": {
+          "tags": [
+            "Asset_Specifications"
+          ],
+          "summary": "Delete record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterByTk"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Asset_Specifications/{collectionIndex}/Asset:get": {
+        "get": {
+          "tags": [
+            "Asset_Specifications.Asset"
+          ],
+          "summary": "Return a record of Many to one",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/fields"
+            },
+            {
+              "$ref": "#/components/parameters/appends"
+            },
+            {
+              "$ref": "#/components/parameters/except"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Asset_Specifications"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Asset_Specifications/{collectionIndex}/Asset:set": {
+        "post": {
+          "tags": [
+            "Asset_Specifications.Asset"
+          ],
+          "summary": "Associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "name": "tk",
+              "in": "query",
+              "description": "targetKey",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Asset_Specifications/{collectionIndex}/Asset:remove": {
+        "post": {
+          "tags": [
+            "Asset_Specifications.Asset"
+          ],
+          "summary": "Disassociate the relationship record",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ]
+        }
+      },
+      "/Asset_Specifications/{collectionIndex}/Asset:update": {
+        "post": {
+          "tags": [
+            "Asset_Specifications.Asset"
+          ],
+          "summary": "Update the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Asset_Specifications.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Asset_Specifications"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Asset_Specifications/{collectionIndex}/Asset:create": {
+        "post": {
+          "tags": [
+            "Asset_Specifications.Asset"
+          ],
+          "summary": "Create and associate a record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            },
+            {
+              "$ref": "#/components/parameters/whitelist"
+            },
+            {
+              "$ref": "#/components/parameters/blacklist"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Asset_Specifications.form"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "$ref": "#/components/schemas/Asset_Specifications"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Asset_Specifications/{collectionIndex}/Asset:destroy": {
+        "post": {
+          "tags": [
+            "Asset_Specifications.Asset"
+          ],
+          "summary": "Destroy and disassociate the relationship record",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/collectionIndex"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "Asset_Specifications",
+        "description": "Asset Specifications"
+      },
+      {
+        "name": "Asset_Specifications.Asset",
+        "description": "Many to one relationship, Asset Specifications/Asset"
+      }
+    ]
+  }
+]

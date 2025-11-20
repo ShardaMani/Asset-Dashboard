@@ -1,0 +1,72 @@
+[
+  {
+    "createdAt": "2025-11-14T09:42:05.272Z",
+    "updatedAt": "2025-11-14T09:42:05.275Z",
+    "asset_id": 24,
+    "is_hazardous": null,
+    "expected_lifetime": null,
+    "Current_condition_of_asset": "New and Working",
+    "utilization_frequency": "High",
+    "is_portable": true,
+    "Description": null,
+    "id": 2,
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T11:30:14.369Z",
+    "updatedAt": "2025-11-14T11:30:14.372Z",
+    "asset_id": 25,
+    "is_hazardous": null,
+    "expected_lifetime": null,
+    "Current_condition_of_asset": "New and Working",
+    "utilization_frequency": "High",
+    "is_portable": true,
+    "Description": null,
+    "id": 3,
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T11:51:22.507Z",
+    "updatedAt": "2025-11-14T11:51:22.510Z",
+    "asset_id": 26,
+    "is_hazardous": null,
+    "expected_lifetime": null,
+    "Current_condition_of_asset": "New and Working",
+    "utilization_frequency": "High",
+    "is_portable": true,
+    "Description": null,
+    "id": 4,
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T12:01:37.252Z",
+    "updatedAt": "2025-11-14T12:01:37.254Z",
+    "asset_id": 27,
+    "is_hazardous": null,
+    "expected_lifetime": null,
+    "Current_condition_of_asset": "New and Working",
+    "utilization_frequency": null,
+    "is_portable": true,
+    "Description": null,
+    "id": 5,
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-17T07:45:25.575Z",
+    "updatedAt": "2025-11-17T07:45:25.577Z",
+    "asset_id": 28,
+    "is_hazardous": null,
+    "expected_lifetime": null,
+    "Current_condition_of_asset": "New and Working",
+    "utilization_frequency": "High",
+    "is_portable": true,
+    "Description": null,
+    "id": 6,
+    "createdById": 731,
+    "updatedById": 731
+  }
+]

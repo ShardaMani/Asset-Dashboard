@@ -1,0 +1,194 @@
+[
+  {
+    "createdAt": "2025-11-12T05:06:59.784Z",
+    "updatedAt": "2025-11-14T10:18:31.062Z",
+    "Building_Id": null,
+    "SRB_Id": 3,
+    "Room_Id": 4,
+    "Asset_RFID_Tag": null,
+    "end_user_id": null,
+    "Serial_Number": null,
+    "Is_registered": "no",
+    "is_active": "Yes",
+    "Asset_Name": "Server/Workstation : Intel Xeon dual processor, 128 GB DDR5 memory, 2 TB  HDD Storage, Redundant power supply.",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Research"
+    ],
+    "id": 11,
+    "Model_Number": "Others - Computers",
+    "createdById": 2,
+    "updatedById": 2
+  },
+  {
+    "createdAt": "2025-11-12T09:25:32.458Z",
+    "updatedAt": "2025-11-14T10:18:28.097Z",
+    "Building_Id": 1,
+    "SRB_Id": 17,
+    "Room_Id": 5,
+    "Asset_RFID_Tag": null,
+    "end_user_id": null,
+    "Serial_Number": null,
+    "Is_registered": "no",
+    "is_active": "Yes",
+    "Asset_Name": "HP System (Intel core i5 processor, 16 GB RAM, 512 GB SSD, 24\" Monitor)",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Research"
+    ],
+    "id": 12,
+    "Model_Number": "Others - Computers",
+    "createdById": 2,
+    "updatedById": 2
+  },
+  {
+    "createdAt": "2025-11-12T10:23:16.461Z",
+    "updatedAt": "2025-11-14T10:18:23.825Z",
+    "Building_Id": 1,
+    "SRB_Id": 4,
+    "Room_Id": 6,
+    "Asset_RFID_Tag": null,
+    "end_user_id": null,
+    "Serial_Number": null,
+    "Is_registered": "no",
+    "is_active": "Yes",
+    "Asset_Name": "Cat6 UTP Cable Box -1 Nos and  24 Port Jack panel-2 Nos, Rj45 Connectors-100 Nos",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Research"
+    ],
+    "id": 22,
+    "Model_Number": "24 port POE",
+    "createdById": 2,
+    "updatedById": 2
+  },
+  {
+    "createdAt": "2025-11-12T11:57:13.073Z",
+    "updatedAt": "2025-11-14T10:18:19.430Z",
+    "Building_Id": 2,
+    "SRB_Id": 10,
+    "Room_Id": 33,
+    "Asset_RFID_Tag": null,
+    "end_user_id": null,
+    "Serial_Number": null,
+    "Is_registered": "no",
+    "is_active": "Yes",
+    "Asset_Name": "E1 READER",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Research"
+    ],
+    "id": 23,
+    "Model_Number": "Others - Electronic Components",
+    "createdById": 2,
+    "updatedById": 2
+  },
+  {
+    "createdAt": "2025-11-14T09:35:38.320Z",
+    "updatedAt": "2025-11-14T09:35:38.328Z",
+    "Building_Id": 1,
+    "SRB_Id": 13,
+    "Room_Id": 21,
+    "Asset_RFID_Tag": null,
+    "end_user_id": 11,
+    "Serial_Number": "25001088",
+    "Is_registered": "yes",
+    "is_active": "Yes",
+    "Asset_Name": "EI 657 READER WITH BATTERY BACKUP",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Research"
+    ],
+    "id": 24,
+    "Model_Number": "EI 657 ",
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T11:29:43.674Z",
+    "updatedAt": "2025-11-14T11:29:43.683Z",
+    "Building_Id": 1,
+    "SRB_Id": 155,
+    "Room_Id": 47,
+    "Asset_RFID_Tag": null,
+    "end_user_id": 23,
+    "Serial_Number": "2PGHN24",
+    "Is_registered": "yes",
+    "is_active": "Yes",
+    "Asset_Name": "EBI 700 Software 2000 points License Honeywell",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Other",
+      "Research"
+    ],
+    "id": 25,
+    "Model_Number": "EBI 700 ",
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T11:48:44.622Z",
+    "updatedAt": "2025-11-14T11:48:44.630Z",
+    "Building_Id": 1,
+    "SRB_Id": 33,
+    "Room_Id": 52,
+    "Asset_RFID_Tag": null,
+    "end_user_id": 23,
+    "Serial_Number": "5206370t",
+    "Is_registered": "yes",
+    "is_active": "Yes",
+    "Asset_Name": "Supply & installation of 1.5 tr 3 star split Hi-Wall Air conditioner with required stabilizer 4kva single booster",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Facility",
+      "Other"
+    ],
+    "id": 26,
+    "Model_Number": "Supply & installation of 1.5 tr 3 star split Hi-Wall Air conditioner with required stabilizer 4kva single booster",
+    "createdById": 731,
+    "updatedById": 731
+  },
+  {
+    "createdAt": "2025-11-14T12:00:43.523Z",
+    "updatedAt": "2025-11-17T05:45:21.678Z",
+    "Building_Id": 1,
+    "SRB_Id": 16,
+    "Room_Id": 54,
+    "Asset_RFID_Tag": null,
+    "end_user_id": 11,
+    "Serial_Number": "2560UORP8APEM",
+    "Is_registered": "yes",
+    "is_active": "Yes",
+    "Asset_Name": "Synology NAS RS3621XS + NAS Storage 2U Rackserver",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Research"
+    ],
+    "id": 27,
+    "Model_Number": " NAS RS3621XS ",
+    "createdById": 731,
+    "updatedById": 2
+  },
+  {
+    "createdAt": "2025-11-17T07:44:36.833Z",
+    "updatedAt": "2025-11-17T07:44:36.841Z",
+    "Building_Id": 1,
+    "SRB_Id": 43,
+    "Room_Id": 54,
+    "Asset_RFID_Tag": null,
+    "end_user_id": 23,
+    "Serial_Number": "25284PDX0031U230 ",
+    "Is_registered": "yes",
+    "is_active": "Yes",
+    "Asset_Name": "7.5 TR Precision AC Unit (24KW)",
+    "PO_Id": null,
+    "Operational_Purpose": [
+      "Facility",
+      "Research"
+    ],
+    "id": 28,
+    "Model_Number": "7.5 TR Precision AC Unit ",
+    "createdById": 731,
+    "updatedById": 731
+  }
+]

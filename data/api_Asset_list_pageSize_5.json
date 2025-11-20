@@ -1,0 +1,116 @@
+[
+  {
+    "data": [
+      {
+        "createdAt": "2025-11-12T05:06:59.784Z",
+        "updatedAt": "2025-11-14T10:18:31.062Z",
+        "Building_Id": null,
+        "SRB_Id": 3,
+        "Room_Id": 4,
+        "Asset_RFID_Tag": null,
+        "end_user_id": null,
+        "Serial_Number": null,
+        "Is_registered": "no",
+        "is_active": "Yes",
+        "Asset_Name": "Server/Workstation : Intel Xeon dual processor, 128 GB DDR5 memory, 2 TB  HDD Storage, Redundant power supply.",
+        "PO_Id": null,
+        "Operational_Purpose": [
+          "Research"
+        ],
+        "id": 11,
+        "Model_Number": "Others - Computers",
+        "createdById": 2,
+        "updatedById": 2
+      },
+      {
+        "createdAt": "2025-11-12T09:25:32.458Z",
+        "updatedAt": "2025-11-14T10:18:28.097Z",
+        "Building_Id": 1,
+        "SRB_Id": 17,
+        "Room_Id": 5,
+        "Asset_RFID_Tag": null,
+        "end_user_id": null,
+        "Serial_Number": null,
+        "Is_registered": "no",
+        "is_active": "Yes",
+        "Asset_Name": "HP System (Intel core i5 processor, 16 GB RAM, 512 GB SSD, 24\" Monitor)",
+        "PO_Id": null,
+        "Operational_Purpose": [
+          "Research"
+        ],
+        "id": 12,
+        "Model_Number": "Others - Computers",
+        "createdById": 2,
+        "updatedById": 2
+      },
+      {
+        "createdAt": "2025-11-12T10:23:16.461Z",
+        "updatedAt": "2025-11-14T10:18:23.825Z",
+        "Building_Id": 1,
+        "SRB_Id": 4,
+        "Room_Id": 6,
+        "Asset_RFID_Tag": null,
+        "end_user_id": null,
+        "Serial_Number": null,
+        "Is_registered": "no",
+        "is_active": "Yes",
+        "Asset_Name": "Cat6 UTP Cable Box -1 Nos and  24 Port Jack panel-2 Nos, Rj45 Connectors-100 Nos",
+        "PO_Id": null,
+        "Operational_Purpose": [
+          "Research"
+        ],
+        "id": 22,
+        "Model_Number": "24 port POE",
+        "createdById": 2,
+        "updatedById": 2
+      },
+      {
+        "createdAt": "2025-11-12T11:57:13.073Z",
+        "updatedAt": "2025-11-14T10:18:19.430Z",
+        "Building_Id": 2,
+        "SRB_Id": 10,
+        "Room_Id": 33,
+        "Asset_RFID_Tag": null,
+        "end_user_id": null,
+        "Serial_Number": null,
+        "Is_registered": "no",
+        "is_active": "Yes",
+        "Asset_Name": "E1 READER",
+        "PO_Id": null,
+        "Operational_Purpose": [
+          "Research"
+        ],
+        "id": 23,
+        "Model_Number": "Others - Electronic Components",
+        "createdById": 2,
+        "updatedById": 2
+      },
+      {
+        "createdAt": "2025-11-14T09:35:38.320Z",
+        "updatedAt": "2025-11-14T09:35:38.328Z",
+        "Building_Id": 1,
+        "SRB_Id": 13,
+        "Room_Id": 21,
+        "Asset_RFID_Tag": null,
+        "end_user_id": 11,
+        "Serial_Number": "25001088",
+        "Is_registered": "yes",
+        "is_active": "Yes",
+        "Asset_Name": "EI 657 READER WITH BATTERY BACKUP",
+        "PO_Id": null,
+        "Operational_Purpose": [
+          "Research"
+        ],
+        "id": 24,
+        "Model_Number": "EI 657 ",
+        "createdById": 731,
+        "updatedById": 731
+      }
+    ],
+    "meta": {
+      "hasNext": true,
+      "page": 1,
+      "pageSize": 5
+    }
+  }
+]
