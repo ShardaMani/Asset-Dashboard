@@ -291,7 +291,7 @@ app.get('/admin/count-active-assets', async (req, res) => {
     if (!building) {
       const msg = `Building not found: ${buildingName}`;
       console.log(`⚠ ${msg}`);
-      return res.status(404).json({ building: buildingName, count: 0, message: msg });
+      return res.status(404).json({ Building_Name: buildingName, Count: 0, Message: msg });
     }
 
     // Fetch all assets and count active ones belonging to the building
@@ -304,10 +304,10 @@ app.get('/admin/count-active-assets', async (req, res) => {
       return acc + ((belongs && isActive) ? 1 : 0);
     }, 0);
 
-    const msg = `Active assets in \"${buildingName}\": ${count}`;
-    console.log(msg);
+  const msg = `Active assets in \"${buildingName}\": ${count}`;
+  console.log(msg);
 
-    res.json({ building: buildingName, buildingId: building.id, count, message: msg });
+  res.json({ Building_Name: buildingName, BuildingId: building.id, Count: count, Message: msg });
   } catch (err) {
     console.error('Error in admin/count-active-assets:', err.message || err);
     res.status(500).json({ error: err.message || String(err) });
