@@ -286,7 +286,7 @@ app.get('/admin/count-active-assets', async (req, res) => {
 
     // Find building by name (case-insensitive). We use fetchAllRecords to ensure full dataset.
     const buildings = await fetchAllRecords('Buildings');
-    const building = buildings.find(b => (b.Name || b.name || '') && (String(b.Name || b.name).toLowerCase() === buildingName.toLowerCase()));
+    const building = buildings.find(b => (b.Building_Name || b.Name || b.name || '') && (String(b.Building_Name || b.Name || b.name).toLowerCase() === buildingName.toLowerCase()));
 
     if (!building) {
       const msg = `Building not found: ${buildingName}`;
@@ -317,6 +317,49 @@ app.get('/admin/count-active-assets', async (req, res) => {
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// ADMIN DEBUG: report whether backend has API key and base URL configured
+app.get('/admin/debug', (req, res) => {
+  const hasApiKey = !!API_KEY;
+  const baseUrl = BASE_URL || null;
+  res.json({ hasApiKey, baseUrl });
+});
+
+// ADMIN: test a lightweight authenticated request to NocoBase to verify the API key
+// This will not return the API key. It returns only status info to help debug 401/403.
+app.get('/admin/test-nocobase', async (req, res) => {
+  try {
+    const endpoint = '/api/Buildings:list?pageSize=1';
+    const url = `${BASE_URL}${endpoint}`;
+    const response = await axios.get(url, { headers: getHeaders(), timeout: 10000 });
+    // Return safe metadata only
+    return res.json({ success: true, status: response.status, statusText: response.statusText, fetched: Array.isArray(response.data.data) ? response.data.data.length : null });
+  } catch (err) {
+    // If axios error, include status if present
+    const status = err.response ? err.response.status : null;
+    const statusText = err.response ? err.response.statusText : null;
+    const dataMessage = err.response && err.response.data && err.response.data.message ? err.response.data.message : null;
+    console.error('/admin/test-nocobase error:', status, dataMessage || err.message);
+    return res.status(500).json({ success: false, status, statusText, message: dataMessage || err.message });
+  }
+});
+
+// ADMIN: header diagnostics (safe) — shows whether Authorization header is constructed and token length (does NOT reveal token)
+app.get('/admin/header-diagnostics', (req, res) => {
+  try {
+    const headers = getHeaders();
+    const auth = headers.Authorization || headers.authorization || null;
+    const hasAuth = !!auth;
+    const prefix = hasAuth ? auth.split(' ')[0] : null; // usually 'Bearer'
+    const token = hasAuth ? auth.split(' ')[1] : null;
+    const tokenLength = token ? token.length : 0;
+
+    // Do not return the token value. Only metadata.
+    res.json({ hasAuth, prefix, tokenLength });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
 });
 
 // Start server

@@ -10,12 +10,18 @@ const formatAmount = (amount: number) => {
   return `₹${amount.toLocaleString('en-IN')}`
 }
 
+// Use Vite env var for backend base URL. In production use VITE_API_BASE, in dev use proxy
+const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+const api = axios.create({ 
+  baseURL: API_BASE.startsWith('http') ? API_BASE + '/api' : API_BASE 
+})
+
 function Dashboard() {
   // Fetch SRB amount distribution
   const { data: amountData, isLoading: amountLoading } = useQuery({
     queryKey: ['srb-amount-distribution'],
     queryFn: async () => {
-      const response = await axios.get('/api/stats/srb-amount-distribution')
+      const response = await api.get('/stats/srb-amount-distribution')
       return response.data
     },
   })
@@ -24,7 +30,7 @@ function Dashboard() {
   const { data: categoryData, isLoading: categoryLoading } = useQuery({
     queryKey: ['asset-by-category'],
     queryFn: async () => {
-      const response = await axios.get('/api/stats/asset-by-category')
+      const response = await api.get('/stats/asset-by-category')
       return response.data
     },
   })
@@ -33,7 +39,7 @@ function Dashboard() {
   const { data: summaryData, isLoading: summaryLoading } = useQuery({
     queryKey: ['summary'],
     queryFn: async () => {
-      const response = await axios.get('/api/stats/summary')
+      const response = await api.get('/stats/summary')
       return response.data
     },
   })
