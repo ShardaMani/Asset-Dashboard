@@ -198,7 +198,7 @@ function Dashboard() {
                 fill="#8884d8"
                 dataKey="value"
               >
-                {categoryChartData.map((entry, index) => (
+                {categoryChartData.map((_: any, index: number) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
